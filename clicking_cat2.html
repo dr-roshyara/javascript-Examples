@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Clicking cat</title>
+	<style type="text/css">
+		#catDisplay{
+			text-align: center;
+			/*padding-top: 20px;*/
+			margin-top: 10px;
+		}
+		#catInfo{
+			display: none;
+		}
+	</style>
+</head>
+<body>
+	 <h2 style="text-align: center;"> Click on any cat name and count the total corresponding clicks</h2>
+	<div id="catNames" style="display: Flex; justify-content: center; margin-top: 20px;"> 
+		 <div style="padding:10px; margin-right:10px; background-color: gray; border-radius: 0.295rem;"  id="cat1" style="padding:10px;" >Cat 1</div>
+		 <div style="padding:10px; margin-right:10px; background-color: gray; border-radius: 0.295rem;"
+		 id="cat2">Cat 2</div>
+		 <div style="padding:10px; margin-right:10px; background-color: gray; border-radius: 0.295rem;"  id="cat3">Cat 3</div>
+		 <div style="padding:10px; margin-right:10px; background-color: gray; border-radius: 0.295rem;"  id="cat4">Cat 4</div>
+		 <div style="padding:10px; margin-right:10px; background-color: gray; border-radius: 0.295rem;"  id="cat5">Cat 5</div>
+	</div>
+	<div id="catDisplay">
+		 <p style="padding: 5px; font-weight: 600;">If you click on a cat name, the corresponding cat Picture will be displayed  including its name and the total number of click on the name.</p>
+		 <div id="catInfo">
+		 	test		 
+		 </div>
+	</div>
+	<script type="text/javascript">
+			var catIds =['cat1','cat2','cat3','cat4','cat5'];
+			var catCounts={
+				cat1: 0,
+				cat2: 0,
+				cat3: 0,
+				cat4: 0,
+				cat5: 0
+				
+			}
+			function display(catId){
+				 id  =document.getElementById('catInfo');
+				 var clickCountId = catId +"Id";
+				 var clickNr = 0;
+				 // var clickCountId =document.getElementById(clickCountId);
+				 // if(clickCountId){
+					// clickNr = parseInt(clickCountId.textContent);
+				 // }				
+				 clickNr =catCounts[catId]+1;
+				 catCounts[catId] =clickNr
+				  console.log(catCounts[catId])
+				 //set everything content of the node to null 
+				 id.innerHTML ='';
+				 var elem = document.createElement('img');				
+				  elem.src =catId+".jpg"
+				  elem.height ="400";
+				  elem.width ="450";
+				  elem.style.borderRadius ="0.35rem";
+				  id.appendChild(elem);
+				  var elem1 =document.createElement('p');
+				  elem1.textContent =catId;
+				  elem1.style.fontWeight ="bold";
+				  id.appendChild(elem1);
+				  //count click 
+				  var elem2 = document.createElement('p');
+				  elem2.setAttribute('id', clickCountId);
+				  elem2.innerHTML ="Total Click on the name of this cat: <b>" +clickNr+ "<b>";
+				  id.appendChild(elem2);
+				//id.innerHTML  =catId;
+				id.style.display ="block";
+
+				
+			}
+			function displayCorrectCat(catIds){
+				for (i=0; i<catIds.length; ++i){
+					var catId = catIds[i];
+					id =document.getElementById(catId);
+					id.addEventListener('click', (function (copyOfcatId){ return ()=>display(copyOfcatId)})(catId), false);	
+
+				}
+			
+			}
+
+			displayCorrectCat(catIds);
+
+	</script>
+</body>
+</html>

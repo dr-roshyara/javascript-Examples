@@ -6,8 +6,11 @@
 <body>
 	<div>
 		 <h2>Page2: Closure and Event Listener</h2>
-		 <p>Compare the two pages and understand the difference. </p>
-		 	<ul>
+		 <ul>
+		 	  <li> Click on the numbers</li> 
+		 	  <li> Compare the two pages  </li> 
+		 	  <li> Understand the differences. </li>
+		 	<ul style="padding:10px;">
 		 		<li> <a href="closure_event_listner.html"> Page 1 </a></li>
 		 		<li> <a href="closure_event_listner1.html"> Page 2 </a></li>
 		 	</ul>
@@ -17,6 +20,9 @@
 	</div>
 	<script type="text/javascript">
 		var id =document.getElementById('listArray');
+		id.style.margin = "10px"; 
+		id.style.padding = "10px"; 
+				
 		var nums =[1,2,3];
 		 function displayNumbers(){
 		 	for (i=0; i<nums.length; i++){

@@ -3,6 +3,6 @@
 * [Clicking on two cats](https://htmlpreview.github.io/?https://github.com/dr-roshyara/javascript-Examples/blob/master/clicking_cat1.html)
 
 ##	Closure and addEventListener
-* [page not working](https://htmlpreview.github.io/?https://github.com/dr-roshyara/javascript-Examples/blob/master/closure_event_listner.html)
-* [page working](https://htmlpreview.github.io/?https://github.com/dr-roshyara/javascript-Examples/blob/master/closure_event_listner1.html)
+* [Page 1](https://htmlpreview.github.io/?https://github.com/dr-roshyara/javascript-Examples/blob/master/closure_event_listner.html)
+* [Page 2](https://htmlpreview.github.io/?https://github.com/dr-roshyara/javascript-Examples/blob/master/closure_event_listner1.html)
 
