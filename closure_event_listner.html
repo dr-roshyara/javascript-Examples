@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>closure and event listner</title>
+</head>
+<body>
+	<div>
+		 <h2>Closure and Event Listener</h2>
+		 <p>Compare the two pages and understand the difference. You should learn why alerting the correct message is not working in this page below. </p>
+		 	<ul>
+		 		<li> <a href="closure_event_listner.html"> Page 1 </a></li>
+		 		<li> <a href="closure_event_listner1.html"> Page 2 </a></li>
+		 	</ul>
+		  <div id="listArray">
+		  	  
+		  </div>
+	</div>
+	<script type="text/javascript">
+		var id =document.getElementById('listArray');
+		var nums =[1,2,3];
+		 function displayNumbers(){
+		 	for (i=0; i<nums.length; i++){
+		 	  var num 	=	nums[i];
+		 	 var elem = document.createElement('div');
+		 	 elem.style.margin ="10px";
+		 	 elem.style.padding ="10px";
+		 	 elem.style.backgroundColor ="gray";
+		 	 elem.style.textAlign = "center";	 	 
+    		 var textnode = document.createTextNode(num);
+    		 elem.appendChild(textnode);
+    		 id.appendChild(elem);
+    		 elem.addEventListener('click',function (){alert(num)},false);
+		 	}
+		 }
+		 displayNumbers()
+	</script>
+</body>
+</html>
