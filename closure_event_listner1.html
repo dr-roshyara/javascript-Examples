@@ -1,12 +1,12 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<title>closure and event Lisetner</title>
+	<title>closure and event listener</title>
 </head>
 <body>
 	<div>
-		 <h2>Page1: Closure and Event Listener</h2>
-		 <p>Compare the two pages and understand the difference. You should learn why alerting the correct message is not working in this page below. </p>
+		 <h2>Page2: Closure and Event Listener</h2>
+		 <p>Compare the two pages and understand the difference. </p>
 		 	<ul>
 		 		<li> <a href="closure_event_listner.html"> Page 1 </a></li>
 		 		<li> <a href="closure_event_listner1.html"> Page 2 </a></li>
@@ -29,7 +29,11 @@
     		 var textnode = document.createTextNode(num);
     		 elem.appendChild(textnode);
     		 id.appendChild(elem);
-    		 elem.addEventListener('click',function (){alert(num)},false);
+    		 elem.addEventListener('click',(function(numCopy) {
+			        return function() {
+			            alert(numCopy);
+			        };
+			    })(num),false);
 		 	}
 		 }
 		 displayNumbers()
