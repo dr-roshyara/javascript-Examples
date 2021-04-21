@@ -31,6 +31,7 @@
 		 </div>
 	</div>
 	<script type="text/javascript">
+			//model ist catList 
 			var catList = [{name: "cat 1", count: 0, catid: "cat1" },
 				{name: "cat 2", count: 0, catid: "cat2" },
 				{name: "cat 3", count: 0, catid: "cat3" },
@@ -38,32 +39,24 @@
 				{name: "cat 5", count: 0, catid: "cat5" }
 				
 			];
-			
-			function initialize (catList){
-			  	var id 			= document.getElementById("catNames");
-				var len 		=catList.length;
-				for (i =0; i<len; ++i){
-					var curCat 		=catList[i];
-					var createDiv 		=document.createElement('div');
-					createDiv.style 	="padding:10px; margin-right:10px; background-color: gray; border-radius: 0.30rem; hover:background-color: powderblue; hover:transition: background-color .5s;"  
+			/********************************************/
+			//view 
+			/********************************************/
+			function showCatButton (curCat){
+				// var curCat 		=catList[i];
+				var id 			= document.getElementById("catNames");
+				var createDiv 		=document.createElement('div');
+				createDiv.style 	="padding:10px; margin-right:10px; background-color: gray; border-radius: 0.30rem; hover:background-color: powderblue; hover:transition: background-color .5s;"  
 					createDiv.setAttribute('id', curCat.catid);
 					createDiv.textContent =curCat.name;
 					id.appendChild(createDiv);
-					//id.addEventListener('click', function (cat){ return ()=> display(curCat.catid)}, false);	
-				}	
+					//id.addEventListener('click', function (cat){ return ()=> display(curCat.catid)}, false);
 			}
-			function catClick(catList){
-				 id  =document.getElementById('catInfo');
-				 //var clickCountId = catId +"Id";
-				 //var clickNr = 0;
-				 //console.log(clickCountId);
-				 for (i=0; i<catList.length; ++i){
-					var catId = catList[i].catid;
-					id =document.getElementById(catId);
-					id.addEventListener('click', (function (catInfo){ return ()=>displayCat(catInfo)})(catList[i]), false);	
+			//display cat 
+			 function clickCat(curCat){
 
-				}
-				
+				id =document.getElementById(curCat.catid);
+				id.addEventListener('click', (function (catInfo){ return ()=>displayCat(catInfo)})(curCat), false);	
 			 }
 			 function displayCat(catInfo){
 			 	 id  =document.getElementById('catInfo');
@@ -99,12 +92,26 @@
 
 				
 			}
+			/********************************************/
+				//octopus Model
+			/********************************************/
+			function initialize (catList){
+				var len 		=catList.length;
+				for (i =0; i<len; ++i){
+					var curCat 		=catList[i];
+					showCatButton(curCat);
+					clickCat(curCat);
+				}	
+			}
+	
+		//final call 
+			 
 		   function catView(){
-
 			initialize(catList);
 			//displayCorrectCat(catIds);
-			catClick(catList);
+			//catClick(catList);
 		   }
+		 //final call 
 		   catView();
 			
 
