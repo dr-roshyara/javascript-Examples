@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Clicking cat</title>
+	<style type="text/css">
+		#catDisplay{
+			text-align: center;
+			/*padding-top: 20px;*/
+			margin-top: 10px;
+		}
+		#catInfo{
+			display: none;
+		}
+	</style>
+</head>
+<body>
+	 <h2 style="text-align: center;"> Click on any cat name and count the total corresponding clicks</h2>
+	<div id="catNames" style="display: Flex; justify-content: center; margin-top: 20px;"> 
+		<!--  <div style="padding:10px; margin-right:10px; background-color: gray; border-radius: 0.295rem;"  id="cat1" style="padding:10px;" >Cat 1</div>
+		 <div style="padding:10px; margin-right:10px; background-color: gray; border-radius: 0.295rem;"
+		 id="cat2">Cat 2</div>
+		 <div style="padding:10px; margin-right:10px; background-color: gray; border-radius: 0.295rem;"  id="cat3">Cat 3</div>
+		 <div style="padding:10px; margin-right:10px; background-color: gray; border-radius: 0.295rem;"  id="cat4">Cat 4</div>
+		 <div style="padding:10px; margin-right:10px; background-color: gray; border-radius: 0.295rem;"  id="cat5">Cat 5</div> -->
+	</div>
+	<div id="catDisplay">
+		 <p style="padding: 5px; font-weight: 600;">
+		 If you click on a cat name, the corresponding cat Picture will be displayed  including its name and the total number of click on the name.</p>
+		 <div id="catInfo">
+		 	test		 
+		 </div>
+	</div>
+	<script type="text/javascript">
+			var catList = [{name: "cat 1", count: 0, catid: "cat1" },
+				{name: "cat 2", count: 0, catid: "cat2" },
+				{name: "cat 3", count: 0, catid: "cat3" },
+				{name: "cat 4", count: 0, catid: "cat4" },
+				{name: "cat 5", count: 0, catid: "cat5" }
+				
+			];
+			
+			function initialize (catList){
+			  	var id 			= document.getElementById("catNames");
+				var len 		=catList.length;
+				for (i =0; i<len; ++i){
+					var curCat 		=catList[i];
+					var createDiv 		=document.createElement('div');
+					createDiv.style 	="padding:10px; margin-right:10px; background-color: gray; border-radius: 0.30rem; hover:background-color: powderblue; hover:transition: background-color .5s;"  
+					createDiv.setAttribute('id', curCat.catid);
+					createDiv.textContent =curCat.name;
+					id.appendChild(createDiv);
+					//id.addEventListener('click', function (cat){ return ()=> display(curCat.catid)}, false);	
+				}	
+			}
+			function catClick(catList){
+				 id  =document.getElementById('catInfo');
+				 //var clickCountId = catId +"Id";
+				 //var clickNr = 0;
+				 //console.log(clickCountId);
+				 for (i=0; i<catList.length; ++i){
+					var catId = catList[i].catid;
+					id =document.getElementById(catId);
+					id.addEventListener('click', (function (catInfo){ return ()=>displayCat(catInfo)})(catList[i]), false);	
+
+				}
+				
+			 }
+			 function displayCat(catInfo){
+			 	 id  =document.getElementById('catInfo');
+				 var clickCountId = catInfo.catid +"Id";
+				 var clickNr = 0;
+				 catId =catInfo.catid
+				 // var clickCountId =document.getElementById(clickCountId);
+				 // if(clickCountId){
+					// clickNr = parseInt(clickCountId.textContent);
+				 // }				
+				 clickNr =catInfo.count+1;
+				 catInfo.count =clickNr
+				  console.log(catInfo)
+				 //set everything content of the node to null 
+				 id.innerHTML ='';
+				 var elem = document.createElement('img');				
+				  elem.src =catId+".jpg"
+				  elem.height ="400";
+				  elem.width ="450";
+				  elem.style.borderRadius ="0.35rem";
+				  id.appendChild(elem);
+				  var elem1 =document.createElement('p');
+				  elem1.textContent =catId;
+				  elem1.style.fontWeight ="bold";
+				  id.appendChild(elem1);
+				  //count click 
+				  var elem2 = document.createElement('p');
+				  elem2.setAttribute('id', clickCountId);
+				  elem2.innerHTML ="Total Click on the name of this cat: <b>" +clickNr+ "<b>";
+				  id.appendChild(elem2);
+				//id.innerHTML  =catId;
+				id.style.display ="block";
+
+				
+			}
+		   function catView(){
+
+			initialize(catList);
+			//displayCorrectCat(catIds);
+			catClick(catList);
+		   }
+		   catView();
+			
+
+	</script>
+</body>
+</html>
