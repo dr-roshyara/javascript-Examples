@@ -7,3 +7,5 @@
 * [Page 1](https://htmlpreview.github.io/?https://github.com/dr-roshyara/javascript-Examples/blob/master/closure_event_listner.html)
 * [Page 2](https://htmlpreview.github.io/?https://github.com/dr-roshyara/javascript-Examples/blob/master/closure_event_listner1.html)
 
+## Promise 
+* [Promise Example 1](https://htmlpreview.github.io/?https://github.com/dr-roshyara/javascript-Examples/blob/master/promise1.html)

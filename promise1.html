@@ -2,7 +2,15 @@
 <html>
 <head>
 	<title>Promise </title>
-</head>
+	<style>
+		body {
+			margin: 0px;
+		}
+		.responsive {
+			width: 50%;
+			height: 50%;
+		}
+	</style>
 <body>
 	<p>The promise is used  for deferred and asynchronous computations. </p>
 	 <h2> Think of Thenning a Problem</h2>
@@ -17,10 +25,58 @@
 	  	  		<ul> 
 	  	  			<li>Fullfilled or resolved state</li>
 	  	  			<li>Rejected </li>
-	  	  			<li>Pending </li>
+	  	  			<li>Pending </li> 
 	  	  			<li>Setteled</li>
 	  	  		</ul>
 	  	  </div>
 	  </div>
+	  <!------------------------------------>
+	  <h1>Are you doing work when the document is ready?</h1>
+	<h3>Your wrapper should resolve before the huge image finishes loading. Turn on <a href="https://developers.google.com/web/tools/chrome-devtools/profile/network-performance/network-conditions">network throttling</a> to test.</h3>
+	<div class="completion">Wrapper hasn't resolved yet!</div>
+	<img class="responsive" src="images/San_Francisco_Market_Street_between_4th_and_5th_St.jpg" height="248" width="464" alt="SF Market Street"> 
+	<p><a href="https://commons.wikimedia.org/wiki/File:images/San_Francisco_Market_Street_between_4th_and_5th_St.jpg">Photo: Andreas Praefcke (Own work) [GFDL (http://www.gnu.org/copyleft/fdl.html) or CC BY 3.0 (http://creativecommons.org/licenses/by/3.0)], via Wikimedia Commons</a></p>
+	<script>
+		function ready() {
+			/*
+			Your code goes here!
+			Instructions:
+			(1) Set network throttling.
+			(2) Wrap an event listener for readystatechange in a Promise.
+				readystatechange has three stages : (a) loading  (b) interactive, this is the state where elements are partially loaded . (c) complete. when everything is loaded.
+				
+			(3) If document.readyState is not 'loading', resolve().
+			(4) Test by chaining wrapperResolved(). If all goes well, you should see "Resolved" on the page!
+
+			Make sure you return the Promise!
+			 */
+			return new Promise (function (resolve){
+				//
+				function checkState(){
+					if(document.readyState !=='loading'){
+					setTimeout(resolve, 3000);
+
+					}
+				}			
+				document.addEventListener('readystatechange', checkState);
+
+				//
+			});
+		
+		}
+		/*
+		Don't forget to test your code!
+		Call wrapperResolved when the DOM is ready.
+		 */
+		ready().then(wrapperResolved);
+
+		// Just here for your testing
+		function wrapperResolved() {
+			var completion = document.querySelector('.completion');
+			completion.innerHTML = "Resolved the issue!";
+			alert("issue resolved!");
+		};
+	</script>
+
 </body>
 </html>

@@ -27,16 +27,16 @@
 		 <p style="padding: 5px; font-weight: 600;">
 		 If you click on a cat name, the corresponding cat Picture will be displayed  including its name and the total number of click on the name.</p>
 		 <div id="catInfo">
-		 	test		 
+		 <!-- 	test		 --> 
 		 </div>
 	</div>
 	<script type="text/javascript">
 			//model ist catList 
-			var catList = [{name: "cat 1", count: 0, catid: "cat1" },
-				{name: "cat 2", count: 0, catid: "cat2" },
-				{name: "cat 3", count: 0, catid: "cat3" },
-				{name: "cat 4", count: 0, catid: "cat4" },
-				{name: "cat 5", count: 0, catid: "cat5" }
+			var catList = [{name: "cat 1", count: 0, image: "images/cat1.jpg" },
+				{name: "cat 2", count: 0, catid: "cat2", image: "images/cat2.jpg" },
+				{name: "cat 3", count: 0, catid: "cat3", image: "images/cat3.jpg" }, 
+				{name: "cat 4", count: 0, catid: "cat4", image: "images/cat4.jpg" },
+				{name: "cat 5", count: 0, catid: "cat5", image: "images/cat5.jpg" }
 				
 			];
 			/********************************************/
@@ -72,8 +72,9 @@
 				  console.log(catInfo)
 				 //set everything content of the node to null 
 				 id.innerHTML ='';
-				 var elem = document.createElement('img');				
-				  elem.src =catId+".jpg"
+				 var elem = document.createElement('img');	
+				 // console.log(catInfo.image);images/			
+				  elem.src =catInfo.image
 				  elem.height ="400";
 				  elem.width ="450";
 				  elem.style.borderRadius ="0.35rem";
@@ -93,7 +94,7 @@
 				
 			}
 			/********************************************/
-				//octopus Model
+				//octopus Controller 
 			/********************************************/
 			function initialize (catList){
 				var len 		=catList.length;
